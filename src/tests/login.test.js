@@ -11,6 +11,8 @@ test('valid login', async ({ page }) => {
 +      process.env.TEST_PASSWORD || 'password123'
 +    );
 
-    // assert that the title contains "Facebook" or the expected title
-    await expect(page).toHaveTitle(/Facebook/); // Update as per your website's title
+    // Assert successful login by checking for elements that confirm logged-in state
+    await expect(page.locator('.user-profile-element')).toBeVisible(); // Update selector to match your application
+    // Or check for a welcome message
+    await expect(page.locator('.welcome-message')).toContainText('Welcome');
 });
